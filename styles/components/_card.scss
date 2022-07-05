@@ -1,0 +1,153 @@
+@use "../mixins/responsive";
+@use "../mixins/fonts";
+@use "../mixins/images";
+@use "../mixins/colors";
+
+article a{ // generales a todos
+    // height: 1000px; // check de si se rompe cuando le fuerzo un height
+    max-width: 46rem;
+    display: flex;
+    flex-direction: column;
+    background-color: map-get(colors.$colors , 'component' , 'background' );
+    margin-bottom: 1rem;
+
+    @include responsive.respondTo('desktop'){
+        &:hover{
+            opacity: 80%;
+            transition: 200ms ease-out;
+        }
+    }
+
+    h2 {
+        @include fonts.cardTitle;
+        text-align: center;
+        padding: 2rem 2rem 1rem 2rem;
+        margin: 2.5rem 2.5rem 0rem 2.5rem;
+        border: 0.125rem solid map-get(colors.$colors , 'component' , 'border' );
+        border-bottom: none;
+
+        em {
+            @include fonts.cardTitleLead;
+        }
+
+        @include responsive.respondTo('tablet'){
+            text-align: left;
+        }
+    }
+
+    &>p {
+        @include fonts.cardParagraph;
+        margin: 0 2rem 1rem 2rem;
+        order: 2;
+    }
+
+    section {
+        flex-grow: 1;
+        border: 0.125rem solid map-get(colors.$colors , 'component' , 'border' );
+        border-top: none;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-direction: column;
+        margin: 0rem 2.5rem 2rem 2.5rem;
+        padding: 0rem 2rem 2rem 2rem;
+        justify-content: end;
+        position: relative;
+
+        p {
+            @include fonts.cardAuthorAuthor;
+        }
+
+        img{
+            @include images.imagePropertys;
+            width: 7.07rem;
+            height: 7.07rem;
+            border-radius: 50%;
+            border: 0.125rem solid map-get(colors.$colors , 'component' , 'background' );
+        }
+        
+        &::after{
+            content: "";
+            width: 7.07rem;
+            height: 0.125rem;
+            background-color: map-get(colors.$colors , 'component' , 'borderRich' );
+            position: absolute;
+            bottom: 0rem;
+
+            @include responsive.respondTo('tablet'){
+                display: none;
+            }
+        }
+
+        @include responsive.respondTo('tablet'){
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+    }
+
+    >img{ // excluye notas de autor
+        @include images.imagePropertys;
+        width: 100%;
+        height: auto;
+        border: 0.125rem solid map-get(colors.$colors , 'component' , 'border' );
+        margin-bottom: 1rem;
+
+        @include responsive.respondTo('tablet'){
+            margin-bottom: 0rem;
+        }
+
+        &~h2{
+            padding: 0;
+            text-align: left;
+            margin: 0;
+            border: none;
+            order: 0;
+            margin: 0 2rem 1rem 2rem;
+        }
+
+        &~section {
+            flex-direction: row;
+            margin: 0;
+            border: none;
+            margin: 0 2rem 1rem 2rem;
+            padding: 0;
+            justify-content: left;
+            align-items: flex-end;
+            order: 3;
+
+            p {
+                @include fonts.cardRegularAuthor;
+                line-height: 3rem;
+            }
+
+            &::after{
+                display: none;
+            }
+        }
+    }
+
+    p{ // solo la card focal izquierda
+        &~h2{
+            @include fonts.cardTitleFocal;
+            & em{
+                @include fonts.cardTitleFocalLead;
+            }
+        }
+        
+        &~img{
+            @include responsive.respondTo('tablet'){
+                order: 4;
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    
+/*     @include responsive.respondTo('tablet'){
+        border: 1px solid blue;
+    }
+    @include responsive.respondTo('desktop'){
+        border: 1px solid red;
+    } */
+}
+

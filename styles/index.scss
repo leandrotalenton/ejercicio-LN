@@ -1,0 +1,10 @@
+@use "./reset";
+@use "./components/compIndex";
+
+
+main{
+    background-color: rgb(234, 234, 234);
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
