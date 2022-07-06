@@ -3,13 +3,13 @@
 @use "../mixins/images";
 @use "../mixins/colors";
 
-article a{ // generales a todos
-    // height: 1000px; // check de si se rompe cuando le fuerzo un height
+/* general styles for all cards */
+.card a{
+    min-width: 46rem;
     max-width: 46rem;
     display: flex;
     flex-direction: column;
     background-color: map-get(colors.$colors , 'component' , 'background' );
-    margin-bottom: 1rem;
 
     @include responsive.respondTo('desktop'){
         &:hover{
@@ -41,7 +41,7 @@ article a{ // generales a todos
         order: 2;
     }
 
-    section {
+    address {
         flex-grow: 1;
         border: 0.125rem solid map-get(colors.$colors , 'component' , 'border' );
         border-top: none;
@@ -72,7 +72,7 @@ article a{ // generales a todos
             height: 0.125rem;
             background-color: map-get(colors.$colors , 'component' , 'borderRich' );
             position: absolute;
-            bottom: 0rem;
+            bottom: -0.125rem;
 
             @include responsive.respondTo('tablet'){
                 display: none;
@@ -85,15 +85,18 @@ article a{ // generales a todos
         }
     }
 
-    >img{ // excluye notas de autor
-        @include images.imagePropertys;
-        width: 100%;
-        height: auto;
-        border: 0.125rem solid map-get(colors.$colors , 'component' , 'border' );
+    /* styles that exclude "card author" cards */
+    >.mediaContainer{
+        position: relative;
         margin-bottom: 1rem;
+        aspect-ratio: 3/2;
+        overflow: hidden;
+        border: 0.125rem solid map-get(colors.$colors , 'component' , 'border' );
+        display: flex;
+        justify-content: center;
 
-        @include responsive.respondTo('tablet'){
-            margin-bottom: 0rem;
+        & img{
+            @include images.imagePropertys;
         }
 
         &~h2{
@@ -103,9 +106,13 @@ article a{ // generales a todos
             border: none;
             order: 0;
             margin: 0 2rem 1rem 2rem;
+
+            @include responsive.respondTo('tablet'){
+                margin: 0 0rem 1rem 0rem;
+            }
         }
 
-        &~section {
+        &~address {
             flex-direction: row;
             margin: 0;
             border: none;
@@ -114,6 +121,10 @@ article a{ // generales a todos
             justify-content: left;
             align-items: flex-end;
             order: 3;
+
+            @include responsive.respondTo('tablet'){
+                margin: 0 0rem 1rem 0rem;
+            }
 
             p {
                 @include fonts.cardRegularAuthor;
@@ -124,9 +135,14 @@ article a{ // generales a todos
                 display: none;
             }
         }
-    }
+}
 
-    p{ // solo la card focal izquierda
+    /* styles only for left focal card */
+    >p{
+        @include responsive.respondTo('tablet'){
+            margin: 0 0rem 1rem 0rem;
+        }
+
         &~h2{
             @include fonts.cardTitleFocal;
             & em{
@@ -134,20 +150,14 @@ article a{ // generales a todos
             }
         }
         
-        &~img{
+        &~.mediaContainer{
             @include responsive.respondTo('tablet'){
                 order: 4;
                 margin-top: 1rem;
+                margin-bottom: 0;
             }
         }
     }
 
-    
-/*     @include responsive.respondTo('tablet'){
-        border: 1px solid blue;
-    }
-    @include responsive.respondTo('desktop'){
-        border: 1px solid red;
-    } */
 }
 

@@ -11,47 +11,57 @@
 </head>
 <body>
     <main>
+        <h1>
+            1. Armar el artículo (card) que sea lo suficientemente dinámico para contemplar al menos 3 opciones de renders. (*se impone un ancho a las cards a modo de muestra, este será determinado por el módulo contenedor)
+        </h1>
+
         <!-- card with subhead (inverted when expanded) -->
-        <article>
+        <article class="card">
             <a href="#">
                 <p>
                     Subhead. Lana soñaba con volar a la luna. Todas las tardes se tumbaba en su cama y se imaginaba cómo sería su viaje a bordo de su propia nave espacial.
                 </p>
-                <img src="./assets/images/template.png" alt="altImgText">
+                <div class="mediaContainer">
+                    <img src="./assets/images/templatePrimary.png" alt="mediaImgDescription">
+                    <span class="live">EN VIVO</span>
+                </div>
                 <h2>
                     <em>
                         Lead. 
                     </em>
                     Title esto es un titulo de la novedad con unas cuantas lineas que ocupar
                 </h2>
-                <section>
+                <address rel="author">
                     <p>
                         Author / Marquee
                     </p>
-                </section>
+                </address>
             </a>
         </article>
 
         <!-- regular card -->
-        <article>
+        <article class="card">
             <a href="#">
-                <img src="./assets/images/template.png" alt="altImgText">
+                <div class="mediaContainer">
+                    <img src="./assets/images/templatePrimary.png" alt="mediaImgDescription">
+                    <span class="subscriberExclusive">Exclusivo suscriptor</span>
+                </div>
                 <h2>
                     <em>
                         Lead. 
                     </em>
                     Title esto es un titulo de la novedad con unas cuantas lineas que ocupar
                 </h2>
-                <section>
+                <address rel="author">
                     <p>
                         Author / Marquee
                     </p>
-                </section>
+                </address>
             </a>
         </article>
 
         <!-- Author -->
-        <article>
+        <article class="card">
             <a href="#">
                 <h2>
                     <em>
@@ -59,14 +69,15 @@
                     </em>
                     Title cuando se dieron cuenta, los dos hermanos estaban preparándose para alunizar. 
                 </h2>
-                <section>
-                    <img src="./assets/images/template.png" alt="authorImg">
+                <address rel="author">
+                    <img src="./assets/images/templateSecondary.png" alt="authorImg">
                     <p>
                         Author full name
                     </p>
-                </section>
+                </address>
             </a>
         </article>
+
     </main>
 </body>
 </html>
