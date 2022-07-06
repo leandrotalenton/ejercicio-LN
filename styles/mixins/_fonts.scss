@@ -6,21 +6,22 @@
 @mixin cardParagraph {
     color: map-get(colors.$colors , 'font' , 'primary' );
     font-family: Arial, Times;
-    font-weight: 400;
     font-style: normal;
+    font-weight: 400;
     font-size: 2rem;
     line-height: 3rem;
 }
 
 @mixin cardRegularAuthor {
     @include cardParagraph;
-    font-weight: 700;
     font-size: 1.75rem;
+    font-weight: 700;
     line-height: 2rem;
 }
 
 @mixin cardAuthorAuthor {
-    @include cardRegularAuthor;
+    @include cardParagraph;
+    font-size: 1.75rem;
     font-size: 2rem;
     line-height: 3rem;
 }
